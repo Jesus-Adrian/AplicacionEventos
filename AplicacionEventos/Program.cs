@@ -67,11 +67,12 @@ namespace AplicacionEventos
         public static void CalcularFecha(TimeSpan _dtDiferencia, string[] array,DateTime today)
         {
             TimeSpan todayDate = today.TimeOfDay;
-            if (_dtDiferencia.Days < 0)
+            if (_dtDiferencia.TotalDays < todayDate.TotalDays)
             {
                 Console.WriteLine($"{array[0]} ocurrió hace {Math.Abs(_dtDiferencia.Days / 30)} mes(es), {Math.Abs(_dtDiferencia.Days - (_dtDiferencia.Days / 30)*30)} dia(s) {Math.Abs(_dtDiferencia.Hours)} hora(s) y {Math.Abs(_dtDiferencia.Minutes)} minutos(s)");
             }
-            
+          
+
             else
             {
                 Console.WriteLine($"{array[0]} ocurrirá dentro de {_dtDiferencia.Days / 30} mes(es), {Math.Abs(_dtDiferencia.Days - (_dtDiferencia.Days / 30) * 30)} dia(s) {Math.Abs(_dtDiferencia.Hours)} hora(s) y {Math.Abs(_dtDiferencia.Minutes)} minutos(s)");
