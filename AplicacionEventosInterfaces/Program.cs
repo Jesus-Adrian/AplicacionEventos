@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplicacionEventosInterfaces.TimeRange;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,10 +14,26 @@ namespace AplicacionEventosInterfaces
         {
 
             List<string> lstEventos = new List<string>();
+            List<IEvent> lstEventosFormated = new List<IEvent>();
             Reader reader = new Reader();
             lstEventos= reader.ReadFile(@"C:\AplicacionEventos\AplicacionEventos\AplicacionEventosInterfaces\Archivo\Eventos.txt");
             ProcessorEvents oProcessorEvents = new ProcessorEvents();
-            oProcessorEvents.GetListEvent(lstEventos);
+            lstEventosFormated =  oProcessorEvents.GetListEvent(lstEventos);
+            IManagement _oMinute = new Minutes();
+            IManagement _oHour = new Hours();
+            IManagement _oDay = new Days();
+            IManagement _oMonth = new Months();
+
+
+            _oMinute.NextChainLink(_oHour);
+            _oHour.NextChainLink(_oDay);
+            _oDay.NextChainLink(_oMonth);
+
+            foreach (var evento in lstEventosFormated)
+            {
+                _oMinute.EvaluateEvent(evento);
+            }
+            Console.ReadKey();
         }
     }
     

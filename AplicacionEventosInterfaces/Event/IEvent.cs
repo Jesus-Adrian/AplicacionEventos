@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace AplicacionEventosInterfaces
 {
-    class MinutesRange
+    public interface IEvent
     {
+        string cName { get; set; }
+        DateTime cDate{ get; set; }
 
     }
 }

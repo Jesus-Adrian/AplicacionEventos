@@ -41,9 +41,7 @@ namespace AplicacionEventos
                         TimeSpan diferencia = (ConvertirFecha(array[1]).Subtract(today));
 
                         CalcularFecha(diferencia, array,today);
-
                     }
-
 
                 }
             }

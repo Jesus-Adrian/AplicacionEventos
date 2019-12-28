@@ -8,16 +8,15 @@ namespace AplicacionEventosInterfaces
 {
     class ProcessorEvents : IProcessor
     {
-        
         public List<IEvent> GetListEvent(List<string> lstEvents)
         {
-            string[] ArrayFormat = new string[2];
+            
 
             List<IEvent> lstEventsFormated = new List<IEvent>();
 
             foreach (var evento in lstEvents)
             {
-               ArrayFormat = evento.Split(',');
+                string[] ArrayFormat = evento.Split(',');
                 IEvent _oEvento = new Evento()
                 {
                     cName = ArrayFormat[0],
